@@ -1,7 +1,11 @@
 package com.blog.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.blog.entity.Article;
+import com.blog.ResponseResult;
+import com.blog.domain.entity.Article;
+import com.blog.domain.vo.HotArticle;
+
+import java.util.List;
 
 /**
  * ZhangXuan
@@ -9,5 +13,10 @@ import com.blog.entity.Article;
  */
 public interface ArticleService extends IService<Article>{
 
-
+    /**
+     * Hot article list response result.
+     *
+     * @return the response result
+     */
+    ResponseResult<List<HotArticle>> hotArticleList();
 }
