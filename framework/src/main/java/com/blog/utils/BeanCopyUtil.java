@@ -13,6 +13,14 @@ public class BeanCopyUtil {
 
     private BeanCopyUtil(){}
 
+    /**
+     * Copy t.
+     *
+     * @param <T>         the type parameter
+     * @param source      the source
+     * @param targetClass the target class
+     * @return the t
+     */
     public static <T> T copy(Object source, Class<T> targetClass) {
         try {
             T target = targetClass.newInstance();
@@ -23,6 +31,15 @@ public class BeanCopyUtil {
         }
     }
 
+    /**
+     * Copy list.
+     *
+     * @param <O>         the type parameter
+     * @param <T>         the type parameter
+     * @param sourceList  the source list
+     * @param targetClass the target class
+     * @return the list
+     */
     public static <O, T> List<T> copyList(List<O> sourceList, Class<T> targetClass) {
         return sourceList.stream()
                 .map(o -> copy(o, targetClass))
