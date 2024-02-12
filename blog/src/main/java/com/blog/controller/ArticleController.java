@@ -1,14 +1,13 @@
 package com.blog.controller;
 
+import com.blog.domain.vo.ArticleDetailVo;
 import com.blog.domain.vo.ArticleVo;
 import com.blog.result.PageResult;
 import com.blog.result.ResponseResult;
 import com.blog.domain.entity.Article;
 import com.blog.domain.vo.HotArticle;
 import com.blog.service.ArticleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -62,6 +61,23 @@ public class ArticleController {
         ResponseResult<PageResult<ArticleVo>> res = null;
         try {
             res = articleService.articleList(pageNum, pageSize, categoryId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    /**
+     * Article detail response result.
+     *
+     * @param articleId the article id
+     * @return the response result
+     */
+    @GetMapping("/{id}")
+    public ResponseResult<ArticleDetailVo> articleDetail(@PathVariable("id") Long articleId) {
+        ResponseResult<ArticleDetailVo> res = null;
+        try {
+            res = articleService.articleDetail(articleId);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

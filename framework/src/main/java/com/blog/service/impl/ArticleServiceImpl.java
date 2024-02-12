@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.blog.constants.BusinessConstants;
 import com.blog.constants.SystemConstants;
 import com.blog.domain.entity.Article;
 import com.blog.domain.entity.Category;
+import com.blog.domain.vo.ArticleDetailVo;
 import com.blog.domain.vo.ArticleVo;
 import com.blog.domain.vo.HotArticle;
 import com.blog.mapper.ArticleMapper;
@@ -79,5 +81,27 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         PageResult<ArticleVo> res = new PageResult<>(ans, articlePage.getTotal());
 
         return ResponseResult.success(res);
+    }
+
+    @Override
+    public ResponseResult<ArticleDetailVo> articleDetail(Long articleId) {
+        Article article = getById(articleId);
+        if (Objects.isNull(article)) {
+            return ResponseResult.error(BusinessConstants.DATABASE_NOT_FOUND.getCode(),
+                    BusinessConstants.DATABASE_NOT_FOUND.getMsg());
+        }
+
+        ArticleDetailVo articleDetailVo = BeanCopyUtil.copy(article, ArticleDetailVo.class);
+        Long categoryId = articleDetailVo.getCategoryId();
+        if (Objects.nonNull(categoryId)) {
+            Category category = categoryService.getById(categoryId);
+            if (Objects.nonNull(category)) {
+                articleDetailVo.setCategoryName(category.getName());
+            } else {
+                articleDetailVo.setCategoryName("未分类");
+            }
+        }
+
+        return ResponseResult.success(articleDetailVo);
     }
 }
