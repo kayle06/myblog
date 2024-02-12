@@ -26,4 +26,11 @@ public class SystemConstants {
 
     // 分类状态：禁用
     public static final String CATEGORY_STATUS_DELETE = "1";
+
+    // 友链状态：审核通过
+    public static final String LINK_STATUS_PASS = "1";
+
+    // 友链状态：审核未通过
+    public static final String LINK_STATUS_UNSUCCESSFUL = "0";
+
 }
