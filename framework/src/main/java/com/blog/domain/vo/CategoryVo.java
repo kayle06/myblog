@@ -1,18 +1,16 @@
 package com.blog.domain.vo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@ApiModel(description="category")
+@ApiModel(description="categoryVo")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName(value = "category")
 public class CategoryVo {
     /**
      * 主键

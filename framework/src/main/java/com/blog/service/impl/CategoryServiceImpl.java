@@ -2,7 +2,7 @@ package com.blog.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.blog.ResponseResult;
+import com.blog.result.ResponseResult;
 import com.blog.constants.SystemConstants;
 import com.blog.domain.entity.Article;
 import com.blog.domain.entity.Category;

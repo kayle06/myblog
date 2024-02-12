@@ -1,6 +1,6 @@
 package com.blog.service;
 
-import com.blog.ResponseResult;
+import com.blog.result.ResponseResult;
 import com.blog.domain.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.blog.domain.vo.CategoryVo;

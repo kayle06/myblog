@@ -1,6 +1,6 @@
 package com.blog.controller;
 
-import com.blog.ResponseResult;
+import com.blog.result.ResponseResult;
 import com.blog.domain.vo.CategoryVo;
 import com.blog.service.impl.CategoryServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+
 /**
-* (category)表控制层
-*
-* @author xxxxx
-*/
+ * 分类控制器
+ * ZhangXuan
+ * 2024/2/11 11:27
+ */
 @RestController
 @RequestMapping("/category")
 public class CategoryController {

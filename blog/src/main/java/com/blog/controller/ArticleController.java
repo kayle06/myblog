@@ -1,6 +1,8 @@
 package com.blog.controller;
 
-import com.blog.ResponseResult;
+import com.blog.domain.vo.ArticleVo;
+import com.blog.result.PageResult;
+import com.blog.result.ResponseResult;
 import com.blog.domain.entity.Article;
 import com.blog.domain.vo.HotArticle;
 import com.blog.service.ArticleService;
@@ -13,15 +15,16 @@ import java.util.List;
 
 
 /**
- *  ZhangXuan
- *  2024/2/10 17:27
+ * 文章控制器
+ * ZhangXuan
+ * 2024/2/10 17:27
  */
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
-/**
-* 服务对象
-*/
+    /**
+     * 服务对象
+     */
     @Resource
     private ArticleService articleService;
 
@@ -45,5 +48,25 @@ public class ArticleController {
         }
         return res;
     }
+
+    /**
+     * Article list response result.
+     *
+     * @param pageNum    the page num
+     * @param pageSize   the page size
+     * @param categoryId the category id
+     * @return the response result
+     */
+    @GetMapping("/articleList")
+    public ResponseResult<PageResult<ArticleVo>> articleList(Integer pageNum, Integer pageSize, Long categoryId) {
+        ResponseResult<PageResult<ArticleVo>> res = null;
+        try {
+            res = articleService.articleList(pageNum, pageSize, categoryId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
 
 }

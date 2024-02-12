@@ -1,4 +1,4 @@
-package com.blog;
+package com.blog.result;
 
 import com.blog.enums.AppHttpCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;

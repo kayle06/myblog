@@ -53,6 +53,12 @@ public class Article {
     private Long categoryId;
 
     /**
+     * 分类名称
+     */
+    @TableField(exist = false)
+    private String categoryName;
+
+    /**
      * 缩略图
      */
     @TableField(value = "thumbnail")
